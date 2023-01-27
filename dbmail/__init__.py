@@ -4,6 +4,7 @@ from datetime import datetime
 import sys
 
 
+
 VERSION = (2, 4, 0)
 
 default_app_config = 'dbmail.apps.DBMailConfig'
@@ -14,6 +15,7 @@ def get_version():
 
 
 def app_installed(app):
+
     from django.conf import settings
 
     return app in settings.INSTALLED_APPS

@@ -6,6 +6,8 @@ from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import gettext_lazy as _
 from django.shortcuts import redirect, render
 
+from djnago_db_mailer import settings
+
 try:
     from django.core.urlresolvers import reverse
 except ImportError:
@@ -378,16 +380,22 @@ def admin_register(model):
             admin.site.register(model)
 
 
-admin_register(MailFromEmailCredential)
-admin_register(MailSubscription)
-admin_register(MailBaseTemplate)
-admin_register(MailLogException)
-admin_register(MailFromEmail)
-admin_register(MailLogTrack)
-admin_register(MailCategory)
-admin_register(MailTemplate)
-admin_register(MailGroup)
-admin_register(MailLog)
-admin_register(MailBcc)
-admin_register(Signal)
-admin_register(ApiKey)
+if settings.DEBUG:
+    admin_register(MailFromEmailCredential)
+    admin_register(MailSubscription)
+    admin_register(MailBaseTemplate)
+    admin_register(MailLogException)
+    admin_register(MailFromEmail)
+    admin_register(MailLogTrack)
+    admin_register(MailCategory)
+    admin_register(MailTemplate)
+    admin_register(MailGroup)
+    admin_register(MailLog)
+    admin_register(MailBcc)
+    admin_register(Signal)
+    admin_register(ApiKey)
+else:
+    admin_register(MailBaseTemplate)
+    admin_register(MailCategory)
+    admin_register(MailTemplate)
+    admin_register(MailLog)
