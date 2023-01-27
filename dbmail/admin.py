@@ -6,7 +6,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import gettext_lazy as _
 from django.shortcuts import redirect, render
 
-from djnago_db_mailer import settings
+from django.conf import settings
 
 try:
     from django.core.urlresolvers import reverse
